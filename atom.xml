@@ -3,11 +3,11 @@
   <title>haorical&#39;s blog</title>
   
   
-  <link href="https://haorical.github.io/Haorical.github.io/atom.xml" rel="self"/>
+  <link href="https://haorical.github.io/atom.xml" rel="self"/>
   
-  <link href="https://haorical.github.io/Haorical.github.io/"/>
+  <link href="https://haorical.github.io/"/>
   <updated>2021-02-02T14:31:28.427Z</updated>
-  <id>https://haorical.github.io/Haorical.github.io/</id>
+  <id>https://haorical.github.io/</id>
   
   <author>
     <name>haorical</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>爬取&quot;冰冰vlog.001&quot;评论&amp;&amp;做词云</title>
-    <link href="https://haorical.github.io/Haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/"/>
-    <id>https://haorical.github.io/Haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/</id>
+    <link href="https://haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/"/>
+    <id>https://haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/</id>
     <published>2021-02-02T14:29:00.000Z</published>
     <updated>2021-02-02T14:31:28.427Z</updated>
     
@@ -36,19 +36,19 @@
     
     
     
-    <category term="play" scheme="https://haorical.github.io/Haorical.github.io/categories/play/"/>
+    <category term="play" scheme="https://haorical.github.io/categories/play/"/>
     
     
-    <category term="python" scheme="https://haorical.github.io/Haorical.github.io/tags/python/"/>
+    <category term="python" scheme="https://haorical.github.io/tags/python/"/>
     
-    <category term="爬虫" scheme="https://haorical.github.io/Haorical.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://haorical.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://haorical.github.io/Haorical.github.io/2021/02/01/hello-world/"/>
-    <id>https://haorical.github.io/Haorical.github.io/2021/02/01/hello-world/</id>
+    <link href="https://haorical.github.io/2021/02/01/hello-world/"/>
+    <id>https://haorical.github.io/2021/02/01/hello-world/</id>
     <published>2021-02-01T06:41:27.092Z</published>
     <updated>2021-02-01T06:41:27.092Z</updated>
     
