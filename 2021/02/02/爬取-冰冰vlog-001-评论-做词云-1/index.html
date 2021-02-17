@@ -24,28 +24,34 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"haorical.github.io","root":"/Haorical.github.io/","images":"/Haorical.github.io/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":false,"lazyload":false,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="haorical&#39;s blog">
-<meta property="og:url" content="https://haorical.github.io/Haorical.github.io/index.html">
+<meta name="description" content="python小白，纯属来玩的（狗头）  库准备（推荐清华镜像安装） requests bs4 jieba wordcloud imageio matplotlib  具体步骤爬取评论 代码直接贴上了，自行研究  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬取&quot;冰冰vlog.001&quot;评论&amp;&amp;做词云">
+<meta property="og:url" content="https://haorical.github.io/Haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/index.html">
 <meta property="og:site_name" content="haorical&#39;s blog">
+<meta property="og:description" content="python小白，纯属来玩的（狗头）  库准备（推荐清华镜像安装） requests bs4 jieba wordcloud imageio matplotlib  具体步骤爬取评论 代码直接贴上了，自行研究  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-02T14:29:00.000Z">
+<meta property="article:modified_time" content="2021-02-02T14:31:28.427Z">
 <meta property="article:author" content="haorical">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://haorical.github.io/Haorical.github.io/">
+<link rel="canonical" href="https://haorical.github.io/Haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
-<title>haorical's blog</title>
+<title>爬取"冰冰vlog.001"评论&&做词云 | haorical's blog</title>
   
 
 
@@ -143,7 +149,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -156,6 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%93%E5%87%86%E5%A4%87%EF%BC%88%E6%8E%A8%E8%8D%90%E6%B8%85%E5%8D%8E%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">库准备（推荐清华镜像安装）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">具体步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%AF%84%E8%AE%BA"><span class="nav-number">2.1.</span> <span class="nav-text">爬取评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91"><span class="nav-number">2.2.</span> <span class="nav-text">生成词云</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,16 +227,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://haorical.github.io/Haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -242,9 +250,9 @@
       <meta itemprop="name" content="haorical's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Haorical.github.io/2021/02/02/%E7%88%AC%E5%8F%96-%E5%86%B0%E5%86%B0vlog-001-%E8%AF%84%E8%AE%BA-%E5%81%9A%E8%AF%8D%E4%BA%91-1/" class="post-title-link" itemprop="url">爬取"冰冰vlog.001"评论&&做词云</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          爬取"冰冰vlog.001"评论&&做词云
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -277,7 +285,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
+        <blockquote>
 <p>python小白，纯属来玩的（狗头）</p>
 </blockquote>
 <h1 id="库准备（推荐清华镜像安装）"><a href="#库准备（推荐清华镜像安装）" class="headerlink" title="库准备（推荐清华镜像安装）"></a>库准备（推荐清华镜像安装）</h1><ol>
@@ -301,7 +309,6 @@
 <p><strong>还是那句话，冰冰真可爱（狗头）</strong></p>
 </blockquote>
 
-      
     </div>
 
     
@@ -309,83 +316,57 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/Haorical.github.io/images/alipay.jpg" alt="haorical Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/Haorical.github.io/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/Haorical.github.io/tags/python/" rel="tag"># python</a>
+              <a href="/Haorical.github.io/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Haorical.github.io/2021/02/01/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://haorical.github.io/Haorical.github.io/2021/02/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/Haorical.github.io/images/avatar.jpg">
-      <meta itemprop="name" content="haorical">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="haorical's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Haorical.github.io/2021/02/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-01 14:41:27" itemprop="dateCreated datePublished" datetime="2021-02-01T14:41:27+08:00">2021-02-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
